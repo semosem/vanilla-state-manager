@@ -40,8 +40,27 @@ export default class Store {
       return false;
     }
     console.groupCollapsed(`ACTION: ${actionKey}`);
-
     self.status = "action";
     self.actions[actionKey](self, payload);
+    console.groupEnd();
+
+    return true;
+  }
+
+  mutateState(mutationKey, payload) {
+    let self = this;
+
+    if (typeof self.mutations[mutationKey] !== "function") {
+      console.log(`Mutation "${mutationKey}" doesn't exist`);
+      return false;
+    }
+
+    self.status = "mutation";
+
+    let newState = self.mutations[mutationKey](self.state, payload);
+
+    self.state = Object.assign(self.state, newState);
+
+    return true;
   }
 }
