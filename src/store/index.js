@@ -36,13 +36,10 @@ export default class Store {
   dispatch(actionKey, payload) {
     let self = this;
     if (typeof self.actions[actionKey] !== "function") {
-      console.log(`Action "${actionKey} doesn't exist.`);
       return false;
     }
-    console.groupCollapsed(`ACTION: ${actionKey}`);
     self.status = "action";
     self.actions[actionKey](self, payload);
-    console.groupEnd();
 
     return true;
   }
@@ -51,7 +48,6 @@ export default class Store {
     let self = this;
 
     if (typeof self.mutations[mutationKey] !== "function") {
-      console.log(`Mutation "${mutationKey}" doesn't exist`);
       return false;
     }
 

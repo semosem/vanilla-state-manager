@@ -1,0 +1,20 @@
+{
+  "name": "vanilla-state-management",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/semosem/vanilla-state-manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/semosem/vanilla-state-manager/issues"
+  },
+  "homepage": "https://github.com/semosem/vanilla-state-manager#readme"
+}
