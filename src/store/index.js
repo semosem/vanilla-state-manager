@@ -8,26 +8,28 @@ export default class Store {
     self.state = {};
     self.status = "resting";
     self.events = new PubSub();
-
     if (params.hasOwnProperty("actions")) {
       self.actions = params.actions;
     }
-    if (params.hasOWnProperty("mulations")) {
+    if (params.hasOwnProperty("mulations")) {
       self.mutations = params.mutations;
     }
+    console.log(`stateChange: ${key}: ${value}`);
 
-    this.state = new Proxy(params.state || {}, {
+    self.state = new Proxy(params.state || {}, {
       set: function(state, key, value) {
         state[key] = value;
 
         console.log(`stateChange: ${key}: ${value}`);
+
         self.events.publish("stateChange", self.state);
 
         if (self.status !== "mutation") {
-          console.warn(`Please use a mutation to set ${key}`);
+          console.warn(`You should use a mutation to set ${key}`);
         }
 
         self.status = "resting";
+
         return true;
       }
     });
